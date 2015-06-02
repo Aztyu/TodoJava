@@ -8,6 +8,7 @@ package com.supinfo.grapicalinterface;
 import com.supinfo.database.DbManager;
 import com.supinfo.database.RequestGenerator;
 import com.supinfo.utilities.ProjectUtils;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -20,10 +21,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -111,9 +114,9 @@ public class CreationFrame extends JFrame implements ActionListener{
         if(source == button){
             String test = text.getText();
             text_apercu.setText(ProjectUtils.textToHtml(test));
-            System.out.println("text : " + ProjectUtils.textToHtml(test));
         }else if(source == button_create){
             DbManager.createPrepared(RequestGenerator.createTodo(ProjectUtils.textToHtml(text.getText())));
+            JOptionPane.showMessageDialog(null, "Todo created");
         }
     }
 }
