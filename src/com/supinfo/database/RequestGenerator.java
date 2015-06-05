@@ -45,11 +45,15 @@ public class RequestGenerator {
     }
     
     public static java.sql.PreparedStatement createTodo(String text){
-        Connection conn = DbManager.createConnection();
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        String date_mysql = dateFormat.format(date);
+    	Connection conn = DbManager.createConnection();
         
         try{
-            java.sql.PreparedStatement stm = conn.prepareStatement("INSERT INTO todo VALUES(null, ?, FALSE)");
+            java.sql.PreparedStatement stm = conn.prepareStatement("INSERT INTO todo VALUES(null, ?, FALSE, ?)");
             stm.setString(1, text);
+            stm.setString(2, date_mysql);
             return stm;
         }catch(SQLException ex){
             ex.printStackTrace();

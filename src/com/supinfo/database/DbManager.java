@@ -63,7 +63,7 @@ public class DbManager {
             rslt = stm.executeQuery(query);
             
             while(rslt.next()){
-                todo_list.add(new Todo(rslt.getInt("todo_id"), rslt.getString("todo_text"), rslt.getBoolean("todo_isdone")));
+                todo_list.add(new Todo(rslt.getInt("todo_id"), rslt.getString("todo_text"), rslt.getBoolean("todo_isdone"), rslt.getTimestamp("todo_date")));
             }
             
             conn.close();

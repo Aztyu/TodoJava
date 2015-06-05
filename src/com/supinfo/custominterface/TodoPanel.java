@@ -19,6 +19,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -46,19 +48,21 @@ public class TodoPanel extends JPanel{
     private final int todo_id;
     private final int user_id;
     private final String todo_text;
+    private final Timestamp todo_date;
 
-    public TodoPanel(int todo_id, String todo_text, int user_id) {
+    public TodoPanel(int todo_id, String todo_text, int user_id, Timestamp todo_date) {
         super();
         this.todo_id = todo_id;
         this.todo_text = todo_text;
         this.user_id = user_id;
+        this.todo_date = todo_date;
         initComponents();
     }
     
     private void initComponents(){
         SpringLayout sl = new SpringLayout();
         
-        JLabel title = new JLabel("Ticket number " + todo_id);
+        JLabel title = new JLabel("Ticket number " + todo_id + " created on " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(todo_date));
         title.setPreferredSize(new Dimension(540, 40));
         title.setMaximumSize(new Dimension(540, 200));
         this.add(title);

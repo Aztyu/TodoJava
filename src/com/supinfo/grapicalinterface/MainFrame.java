@@ -79,7 +79,7 @@ public class MainFrame extends JFrame implements ActionListener{
             JPanel todo_pan = new JPanel();
             todo_pan.setLayout(new FlowLayout());
             
-            todo_pan.add(new TodoPanel(to.getId(), to.getText(), user_id));
+            todo_pan.add(new TodoPanel(to.getId(), to.getText(), user_id, to.getTodoDate()));
             
             JScrollPane scroll = new JScrollPane(todo_pan, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
             tabPan.addTab("Todo" + i, scroll);
