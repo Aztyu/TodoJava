@@ -11,12 +11,16 @@ import com.supinfo.entities.Comment;
 import com.supinfo.grapicalinterface.MainFrame;
 import com.supinfo.grapicalinterface.ManagerFrame;
 import com.supinfo.utilities.ProjectUtils;
+
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -31,6 +35,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.DefaultCaret;
+
 import static javax.swing.text.DefaultCaret.ALWAYS_UPDATE;
 
 /**
@@ -61,7 +66,7 @@ public class TodoPanel extends JPanel{
         sl.putConstraint(SpringLayout.WEST, title, title.getPreferredSize().height+5, SpringLayout.WEST, this);
         
         JLabel text = new JLabel();
-        text.setText(ProjectUtils.textToHtml(todo_text));
+        text.setText(todo_text);
         Dimension t = text.getPreferredSize();
         text.setPreferredSize(t);
         this.add(text);
@@ -105,6 +110,7 @@ public class TodoPanel extends JPanel{
         comment.setMaximumSize(new Dimension(500, 800));
         comment.setLineWrap(true);
         comment.setWrapStyleWord(true);
+        
         comment.getDocument().addDocumentListener(new DocumentListener() {
 
             @Override
@@ -166,7 +172,7 @@ public class TodoPanel extends JPanel{
                             }
                             c.setVisible(false);
                         }else{
-                            DbManager.createPrepared(RequestGenerator.createComment(comment.getText(), user_id, todo_id));
+                            DbManager.createPrepared(RequestGenerator.createComment(ProjectUtils.textToHtml(comment.getText()), user_id, todo_id));
                             removeAll();
                             initComponents();
                             revalidate();
