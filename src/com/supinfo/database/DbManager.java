@@ -9,6 +9,7 @@ import com.supinfo.entities.Comment;
 import com.supinfo.entities.Employee;
 import com.supinfo.entities.Manager;
 import com.supinfo.entities.Todo;
+
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.DriverManager;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,8 +38,10 @@ public class DbManager {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjava", "root", "root");
         } catch (ClassNotFoundException ex) {
             System.out.println("No class found");
+            JOptionPane.showMessageDialog(null, "No driver found : " + ex.getMessage());
         } catch (SQLException ex) {
             System.out.println("Open connection error : " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Open connection error : " + ex.getMessage());
         }
     }
     
@@ -46,10 +51,12 @@ public class DbManager {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjava", "root", "root");
             return conn;
         } catch (ClassNotFoundException ex) {
+        	JOptionPane.showMessageDialog(null, "No driver found : " + ex.getMessage());
             System.out.println("No class found");
             return null;
         } catch (SQLException ex) {
             System.out.println("Open connection error : " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Open connection error : " + ex.getMessage());
             return null;
         }
     }
