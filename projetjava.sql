@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 01 Juin 2015 à 18:09
+-- Généré le :  Ven 05 Juin 2015 à 18:52
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -33,22 +33,21 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `todo_id` int(11) NOT NULL,
   `comment_date` datetime NOT NULL,
   PRIMARY KEY (`comment_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=89 ;
 
 --
 -- Contenu de la table `comment`
 --
 
 INSERT INTO `comment` (`comment_id`, `comment_text`, `employee_id`, `todo_id`, `comment_date`) VALUES
-(49, 'Test de l''heure', 1, 1, '2015-05-30 18:06:19'),
-(50, 'test de l''heure', 1, 1, '2015-05-30 18:09:30'),
-(51, 'ssdjgkjdgkd', 2, 1, '2015-05-30 18:14:10'),
-(52, 'Il est 18:18', 2, 3, '2015-05-30 18:18:14'),
-(53, '<html>Il n''est plus utile</html><br>', 1, 8, '2015-05-31 10:12:05'),
-(54, '<html>Le test est fini</html><br>', 1, 9, '2015-05-31 10:12:15'),
-(55, '<html>dknbkdsnbjsdfn</html><br>', 1, 7, '2015-05-31 10:16:40'),
-(56, '<html>ahadhrehe</html><br>', 1, 6, '2015-05-31 10:17:11'),
-(57, 'Ainsi que les commentaires !!', 1, 5, '2015-05-31 10:17:44');
+(81, '<html>Ceci est un test commentaire</html><br>', 1, 16, '2015-06-05 18:35:22'),
+(82, '<html>tstcgtcve</html><br>', 1, 16, '2015-06-05 18:36:00'),
+(83, '<html>test pseudo comment</html><br>', 1, 16, '2015-06-05 18:39:51'),
+(84, '<html>test comment<br></html><br>', 2, 16, '2015-06-05 18:48:12'),
+(85, '<html>test</html><br>', 2, 14, '2015-06-05 18:49:40'),
+(86, '<html>test</html><br>', 2, 16, '2015-06-05 18:49:50'),
+(87, '<html>test</html><br>', 2, 15, '2015-06-05 18:49:56'),
+(88, '<html>C''est un joli todo !</html><br>', 1, 17, '2015-06-05 18:50:51');
 
 -- --------------------------------------------------------
 
@@ -61,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `employee_login` varchar(255) NOT NULL,
   `employee_passwd` varchar(255) NOT NULL,
   PRIMARY KEY (`employee_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `employee`
@@ -72,7 +71,8 @@ INSERT INTO `employee` (`employee_id`, `employee_login`, `employee_passwd`) VALU
 (2, 'Username', 'My password'),
 (3, 'Corentin', 'test'),
 (4, 'Aztyu', 'test'),
-(6, 'Username1', 'My password');
+(6, 'Username1', 'My password'),
+(7, 'alexandre', 'alexandre');
 
 -- --------------------------------------------------------
 
@@ -105,23 +105,19 @@ CREATE TABLE IF NOT EXISTS `todo` (
   `todo_id` int(11) NOT NULL AUTO_INCREMENT,
   `todo_text` text NOT NULL,
   `todo_isdone` tinyint(1) NOT NULL DEFAULT '0',
+  `todo_date` datetime NOT NULL,
   PRIMARY KEY (`todo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Contenu de la table `todo`
 --
 
-INSERT INTO `todo` (`todo_id`, `todo_text`, `todo_isdone`) VALUES
-(1, 'Bonjour ceci est un test de todo, merci de le marquer comme fini en temps voulu', 0),
-(2, 'Ceci est un test', 1),
-(3, 'Ceci est un autre test', 0),
-(4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum varius arcu nisl, sollicitudin condimentum augue molestie nec. Cras fringilla, neque id sagittis viverra, elit lectus posuere justo, sit amet molestie sapien urna sed odio. Vivamus viverra ornare interdum. Praesent vulputate magna vitae dolor tempor, ac congue lorem pharetra. Aliquam rutrum felis a porttitor accumsan. Vestibulum id urna mauris. Nulla facilisi. Integer convallis neque non ex lobortis vulputate.\n\nFusce eu lectus enim. Ut consectetur vulputate nibh in blandit. Ut a tellus eu turpis tincidunt sodales. Mauris sit amet suscipit odio, id mattis risus. Praesent suscipit fringilla mi eu gravida. Praesent vel turpis pharetra, commodo sem nec, euismod ex. Nullam ut gravida nisi.\n\nDonec enim odio, tincidunt ut lacus in, convallis auctor felis. Donec scelerisque elementum dolor, quis eleifend ex commodo ac. Fusce ipsum lacus, vehicula at eros vitae, ultricies condimentum sem. In hendrerit vestibulum felis, id vulputate orci feugiat ut. Phasellus dictum massa eu faucibus malesuada. Integer consectetur lorem tempor eros tincidunt maximus. Cras eget dui dolor. Suspendisse pretium, elit ac tempus accumsan, est nulla lobortis velit, sed fermentum lacus leo in elit. Curabitur erat metus, luctus at sapien et, rhoncus sodales nisl.\n\nVivamus ac nulla a nisl facilisis consectetur quis vitae quam. Proin ornare luctus interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla blandit luctus dolor, a eleifend tortor pellentesque ac. Suspendisse ornare magna non mauris consequat maximus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque faucibus, mauris ac vulputate tempor, lorem risus vulputate nulla, in ultrices dui arcu quis magna. Maecenas dapibus venenatis neque et pulvinar. Donec nisi ligula, scelerisque nec nibh non, gravida molestie augue. Integer convallis quam sit amet risus scelerisque, mattis porttitor dolor ultricies. Curabitur porttitor nibh sit amet placerat venenatis. Sed mollis mi lectus, varius interdum tortor condimentum et. Nam ultricies ultrices lacinia. Mauris in justo id leo rhoncus rutrum.\n\nQuisque ultricies enim elit, quis auctor justo scelerisque eu. Proin congue, diam ut aliquam ultricies, libero dui tincidunt arcu, in sagittis nisi metus nec nisi. Aenean et sagittis orci. Etiam tristique rhoncus rutrum. Integer ligula nisl, lobortis eget felis a, rutrum malesuada orci. Integer varius, lorem in commodo luctus, est ante laoreet ex, sed porttitor sapien nulla id ligula. Aenean a laoreet enim. Morbi ac faucibus elit. Fusce ac mattis ligula, a iaculis lorem. Suspendisse potenti. Praesent pharetra luctus massa in bibendum. Proin auctor aliquam augue at tincidunt. Nunc sem lacus, rhoncus a faucibus eget, luctus non ante. Interdum et malesuada fames ac ante ipsum primis in faucibus.', 0),
-(5, 'Bonjour et vive les tests', 0),
-(6, '<html>sjdnvijanjvnaeijnvjksnjknksdnvjkndfjknvjknjnsjksjjdfjkdfjkdfjdkfjkdfjkdfjkdfjkfjkdfjkfjskg<br>jkjhghjgfsdjklasdagkjkafasdfafgjksdfajksdfsdfasdfaksdfahksdfahklsdfhklsdfsdfsdfajksdfadf<br>jsdfasdfajksdfa</html><br>', 1),
-(7, '<html>aNFKNKVNKLSDNVKLNSDlnvknsdnvnskavklnsaklvnklsnvklnsdklnvknsdklvnksdnvklnsdlkvnsdklnvklsnvk<br>nsdklnvklsndkvnsknvklnskvnklsnvklsnvknsknvksnvksnvksnkvnlsknvklsnvklsnklvnslkdvn</html><br>', 1),
-(8, '<html>Nouveau todo <h1>trop classe</h1> et tres utile </html><br>', 1),
-(9, '<html><h1>Test</h1> ceci est un test de todo et de balise </html><br>', 1);
+INSERT INTO `todo` (`todo_id`, `todo_text`, `todo_isdone`, `todo_date`) VALUES
+(14, '<html>Ceci est un test</html><br>', 0, '2015-06-03 00:00:00'),
+(15, '<html>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis sem metus, laci<br>ia suscipit nunc dapibus eu. Ut auctor pretium neque, non egestas orci vehicula eu. Etia<br> volutpat orci non magna vulputate venenatis. Integer finibus nisl sit amet mi tincidunt<br> vitae convallis lorem facilisis. Integer porta commodo augue, et scelerisque arcu euism<br>d at. Vivamus semper eu nulla in porta. Etiam lacinia pretium accumsan.<br><br>Pellentesque ac dui dui. Nullam finibus tellus eu nunc aliquet hendrerit. Nullam auctor au<br>ue quis nisl luctus, non tincidunt nulla ullamcorper. Sed placerat, enim et dignissim pr<br>tium, nisl felis placerat erat, vitae luctus nibh elit in dui. Curabitur sed enim consec<br>etur lectus sodales vehicula sed ut velit. Suspendisse purus velit, fringilla eu ultrice<br> posuere, ornare non augue. Fusce semper tellus non ex feugiat molestie. Cras consequat <br>ccumsan felis, in egestas neque facilisis eget. Etiam tincidunt pretium turpis, interdum<br>accumsan nisl lacinia vitae. Ut vitae consectetur lectus, sit amet lobortis lectus. Maur<br>s auctor non orci sed imperdiet. In ullamcorper sapien felis, eget sagittis eros laoreet<br>vitae. Mauris rhoncus lobortis mi eget ultrices. Nulla varius metus neque, ac fermentum <br>olor imperdiet sit amet. Praesent tristique erat nulla, et efficitur ex aliquet vel. Mae<br>enas ultrices nec ex sed accumsan.<br><br>Maecenas turpis massa, bibendum at accumsan sit amet, fermentum et neque. Nulla finibus an<br>e ante, aliquam ullamcorper enim rhoncus a. Maecenas pharetra dui sit amet est rhoncus, <br>uis euismod eros pellentesque. Duis eu ipsum in purus laoreet volutpat. Nunc aliquam jus<br>o et sapien viverra, a malesuada nibh ornare. Aenean vitae est tincidunt, mattis sapien <br>uis, egestas augue. Ut eget lacus et sem ultricies consectetur. Praesent id mi dictum, p<br>rta leo non, finibus arcu. Fusce dictum nisi eu mollis condimentum. Etiam interdum, orci<br>non mattis dignissim, dui ante fringilla leo, ut congue lorem sem a lectus. Etiam cursus<br>malesuada lorem vel hendrerit. Duis tincidunt placerat lobortis. Nunc pretium laoreet an<br>e. Sed eget tellus et nisl tincidunt ullamcorper. Nullam erat lacus, faucibus vitae tell<br>s non, ultrices gravida sapien. Aliquam faucibus orci nec laoreet dictum.<br><br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egest<br>s. Pellentesque mattis velit a odio facilisis pulvinar. Pellentesque eu urna purus. Pell<br>ntesque sit amet dignissim dui. Nam sed ante ante. Quisque eu quam nisl. Nunc dictum ele<br>entum euismod. Donec purus mi, lobortis non iaculis ac, tincidunt ac nibh. Curabitur ele<br>entum augue at porta varius. Vestibulum id sem leo.<br><br>In quis dolor magna. Cras cursus ut mauris quis euismod. Vivamus elit elit, lacinia effici<br>ur iaculis ut, finibus semper elit. Fusce pellentesque pulvinar interdum. Sed gravida fe<br>giat libero et placerat. Donec ac diam eu nisi pharetra rhoncus. Etiam leo ligula, facil<br>sis sed pulvinar eget, cursus in orci. Fusce semper odio sit amet justo dignissim mollis<br> Donec tempor neque molestie quam posuere, et rhoncus mi scelerisque. Nullam varius posu<br>re fermentum. Aenean consequat magna sed mi porta, id faucibus ex dapibus. Praesent matt<br>s justo ligula, id tincidunt ipsum semper non. Quisque elementum massa non felis condime<br>tum, id scelerisque est egestas. Aenean vitae mi ac dolor maximus consectetur.</html>', 0, '2015-06-02 00:00:00'),
+(16, '<html>test date 05/06/2015 18h35</html><br>', 0, '2015-06-05 18:35:08'),
+(17, '<html><h1>test</h1> balises html</html><br>', 0, '2015-06-05 18:50:22');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

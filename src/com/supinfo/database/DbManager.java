@@ -32,7 +32,7 @@ public class DbManager {
     public static void openConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjava", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjava", "root", "root");
         } catch (ClassNotFoundException ex) {
             System.out.println("No class found");
         } catch (SQLException ex) {
@@ -43,7 +43,7 @@ public class DbManager {
     public static Connection createConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjava", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjava", "root", "root");
             return conn;
         } catch (ClassNotFoundException ex) {
             System.out.println("No class found");
